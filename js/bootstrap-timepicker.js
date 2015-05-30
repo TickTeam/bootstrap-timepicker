@@ -103,19 +103,19 @@
       e.stopPropagation();
 
       // firefox detail 向下滚3,其他 wheelDeta向下 -120
-      var detail = e.wheelDelta || -e.detail
+      var detail = e.originalEvent.wheelDelta || -e.originalEvent.detail
 
       switch (this.highlightedUnit) {
       case 'hour':
-        detail ? this.incrementHour() : this.decrementHour();
+        detail > 0 ? this.incrementHour() : this.decrementHour();
         this._highlightHour();
         break;
       case 'minute':
-        detail ? this.incrementMinute() : this.decrementMinute();
+        detail > 0 ? this.incrementMinute() : this.decrementMinute();
         this._highlightMinute();
         break;
       case 'second':
-        detail ? this.incrementSecond() : this.decrementSecond();
+        detail > 0 ? this.incrementSecond() : this.decrementSecond();
         this._highlightSecond();
         break;
       case 'meridian':
